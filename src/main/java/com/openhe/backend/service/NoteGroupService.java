@@ -3,7 +3,9 @@ package com.openhe.backend.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.openhe.backend.bean.note.NoteGroup;
 
+import java.util.List;
+
 public interface NoteGroupService extends IService<NoteGroup> {
-    NoteGroup[] loadStructure();
-    String loadPassage(int groupId,int passageId);
+    List<NoteGroup> loadStructure();
+    String loadPassage(int groupIdx,int passageIdx);
 }

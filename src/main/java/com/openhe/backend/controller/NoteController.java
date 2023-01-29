@@ -1,26 +1,28 @@
 package com.openhe.backend.controller;
 
 import com.openhe.backend.bean.note.NoteGroup;
+import com.openhe.backend.bean.note.NoteQuery;
+import com.openhe.backend.service.NoteGroupService;
 import com.openhe.backend.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/note")
+import java.util.List;
+
+@RestController
+@RequestMapping("/note")
 public class NoteController {
     @Autowired
-    private NoteService noteService;
+    private NoteGroupService noteGroupService;
 
     @GetMapping("/structure")
-    public NoteGroup[] getStructure() {
-        return noteService.loadStructure();
+    public List<NoteGroup> getStructure() {
+        return noteGroupService.loadStructure();
     }
 
     @PostMapping("/passage")
-    public String postPassage(@RequestBody Integer groupId,
-                              @RequestBody Integer passageId) {
-        return noteService.loadPassage(groupId, passageId);
+    public String postPassage(@RequestBody NoteQuery noteQuery) {
+        return noteGroupService.loadPassage(noteQuery.getGroupIdx(),
+                noteQuery.getPassageIdx());
     }
 }
