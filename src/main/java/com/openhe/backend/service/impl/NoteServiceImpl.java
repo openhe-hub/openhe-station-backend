@@ -8,14 +8,7 @@ import com.openhe.backend.service.NoteService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note> implements NoteService {
-    @Override
-    public NoteGroup[] loadStructure() {
-        return new NoteGroup[0];
-    }
+public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note>
+        implements NoteService {
 
-    @Override
-    public String loadPassage(int groupId, int passageId) {
-        return null;
-    }
 }
