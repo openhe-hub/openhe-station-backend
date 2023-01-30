@@ -1,6 +1,7 @@
 package com.openhe.backend.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.openhe.backend.bean.note.Note;
 import com.openhe.backend.bean.note.NoteGroup;
 import com.openhe.backend.mapper.NoteGroupMapper;
 import com.openhe.backend.mapper.NoteMapper;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 @Service
@@ -55,5 +55,10 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
 
         log.info(content.toString());
         return content.toString();
+    }
+
+    @Override
+    public Note getNoteInfo(int groupIdx, int passageIdx) {
+        return noteGroups.get(groupIdx).getNotes().get(passageIdx);
     }
 }

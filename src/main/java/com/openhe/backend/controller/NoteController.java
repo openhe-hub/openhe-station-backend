@@ -1,5 +1,6 @@
 package com.openhe.backend.controller;
 
+import com.openhe.backend.bean.note.Note;
 import com.openhe.backend.bean.note.NoteGroup;
 import com.openhe.backend.bean.note.NoteQuery;
 import com.openhe.backend.service.NoteGroupService;
@@ -23,6 +24,12 @@ public class NoteController {
     @PostMapping("/passage")
     public String postPassage(@RequestBody NoteQuery noteQuery) {
         return noteGroupService.loadPassage(noteQuery.getGroupIdx(),
+                noteQuery.getPassageIdx());
+    }
+
+    @PostMapping("/info")
+    public Note getNoteInfo(@RequestBody NoteQuery noteQuery) {
+        return noteGroupService.getNoteInfo(noteQuery.getGroupIdx(),
                 noteQuery.getPassageIdx());
     }
 }
