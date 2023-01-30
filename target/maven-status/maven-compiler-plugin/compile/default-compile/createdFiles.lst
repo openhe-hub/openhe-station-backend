@@ -1,0 +1,12 @@
+com\openhe\backend\bean\note\Note.class
+com\openhe\backend\bean\note\NoteQuery.class
+com\openhe\backend\service\impl\NoteGroupServiceImpl.class
+com\openhe\backend\service\impl\NoteServiceImpl.class
+com\openhe\backend\service\NoteService.class
+com\openhe\backend\controller\NoteController.class
+com\openhe\backend\service\NoteGroupService.class
+com\openhe\backend\mapper\NoteMapper.class
+com\openhe\backend\bean\note\NoteGroup.class
+com\openhe\backend\mapper\NoteGroupMapper.class
+com\openhe\backend\controller\TestController.class
+com\openhe\backend\OpenheStationBackendApplication.class
