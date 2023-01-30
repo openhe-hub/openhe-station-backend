@@ -24,14 +24,20 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
 
     List<NoteGroup> noteGroups;
 
+    private boolean isLoaded = false;
+
     @Override
     public List<NoteGroup> loadStructure() {
         noteGroups = noteGroupMapper.selectAll();
+        isLoaded = true;
         return noteGroups;
     }
 
     @Override
     public String loadPassage(int groupIdx, int passageIdx) {
+        if (!isLoaded) {
+            loadStructure();
+        }
         NoteGroup group = noteGroups.get(groupIdx);
         String path = "note";
         StringBuilder content = new StringBuilder();
@@ -59,6 +65,9 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
 
     @Override
     public Note getNoteInfo(int groupIdx, int passageIdx) {
+        if (!isLoaded) {
+            loadStructure();
+        }
         return noteGroups.get(groupIdx).getNotes().get(passageIdx);
     }
 }
