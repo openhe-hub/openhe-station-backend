@@ -1,6 +1,7 @@
 package com.openhe.backend.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.openhe.backend.bean.note.Folder;
 import com.openhe.backend.bean.note.Note;
 import com.openhe.backend.bean.note.NoteGroup;
 import com.openhe.backend.mapper.NoteGroupMapper;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -69,5 +71,13 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
             loadStructure();
         }
         return noteGroups.get(groupIdx).getNotes().get(passageIdx);
+    }
+
+    @Override
+    public boolean isNewFolderValid(Folder folder) {
+        if (!StringUtils.hasLength(folder.getName())) {
+            return false;
+        }
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package com.openhe.backend.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.openhe.backend.bean.note.Folder;
 import com.openhe.backend.bean.note.Note;
 import com.openhe.backend.bean.note.NoteGroup;
 
@@ -12,4 +13,6 @@ public interface NoteGroupService extends IService<NoteGroup> {
     String loadPassage(int groupIdx, int passageIdx);
 
     Note getNoteInfo(int groupIdx, int passageIdx);
+
+    boolean isNewFolderValid(Folder folder);
 }

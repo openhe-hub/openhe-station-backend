@@ -10,5 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note>
         implements NoteService {
-
+    @Override
+    public boolean isNewNoteValid(Note note) {
+        return true;
+    }
 }
