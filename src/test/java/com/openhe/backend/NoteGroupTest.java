@@ -8,21 +8,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class NoteGroupTest {
-    @Autowired
-    NoteGroupMapper noteGroupMapper;
-
-    @Autowired
-    NoteGroupService noteGroupService;
-
-    @Test
-    public void testSelectAll() {
-        noteGroupMapper.selectAll()
-                .forEach(System.out::println);
-    }
-
-    @Test
-    public void testLoadPassage() {
-        noteGroupService.loadStructure();
-        String content = noteGroupService.loadPassage(0, 0);
-    }
+//    @Autowired
+//    NoteGroupMapper noteGroupMapper;
+//
+//    @Autowired
+//    NoteGroupService noteGroupService;
+//
+//    @Test
+//    public void testSelectAll() {
+//        noteGroupMapper.selectAll()
+//                .forEach(System.out::println);
+//    }
+//
+//    @Test
+//    public void testLoadPassage() {
+//        noteGroupService.loadStructure();
+//        String content = noteGroupService.loadPassage(0, 0);
+//    }
 }

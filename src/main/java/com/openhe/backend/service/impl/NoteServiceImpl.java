@@ -24,6 +24,8 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note>
     @Autowired
     NoteMapper noteMapper;
 
+    private final String baseDir = "/home/code/note";
+
     @Override
     public boolean newNote(Passage passage) {
         System.out.println(passage.toString());
@@ -42,8 +44,7 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note>
         System.out.println(ret);
         // save local .md file
         try {
-            String path = ResourceUtils.getURL("classpath:").getPath()
-                    + "note" + passage.getParentPath()
+            String path = baseDir + passage.getParentPath()
                     +  note.getPath() + ".md";
             System.out.println(path);
             System.out.println(passage.getFile().getSize());
@@ -53,6 +54,4 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, Note>
         }
         return true;
     }
-
-
 }

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: com.openhe.backend.NoteGroupTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.529 s - in com.openhe.backend.NoteGroupTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.743 s <<< FAILURE! - in com.openhe.backend.NoteGroupTest
+testLoadPassage  Time elapsed: 0.686 s  <<< ERROR!
+java.lang.RuntimeException: java.nio.file.NoSuchFileException: \home\code\note\web\note3.md
+	at com.openhe.backend.NoteGroupTest.testLoadPassage(NoteGroupTest.java:26)
+Caused by: java.nio.file.NoSuchFileException: \home\code\note\web\note3.md
+	at com.openhe.backend.NoteGroupTest.testLoadPassage(NoteGroupTest.java:26)
+

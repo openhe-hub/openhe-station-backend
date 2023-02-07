@@ -17,8 +17,10 @@ import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,8 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
 
     private boolean isLoaded = false;
 
+    private final String baseDir = "/home/code/note";
+
     @Override
     public List<NoteGroup> loadStructure() {
         noteGroups = noteGroupMapper.selectAll();
@@ -46,7 +50,7 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
             loadStructure();
         }
         NoteGroup group = noteGroups.get(groupIdx);
-        String path = "note";
+        String path = baseDir;
         StringBuilder content = new StringBuilder();
         // concat path
         path += group.getPath();
@@ -54,9 +58,8 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
         path += ".md";
         log.info("reading note content from: " + path);
         // read *.md note
-        ClassPathResource classPathResource = new ClassPathResource(path);
         try {
-            InputStream inputStream = classPathResource.getInputStream();
+            InputStream inputStream = Files.newInputStream(new File(path).toPath());
             byte[] buf = new byte[1024];
             int len = -1;
             while ((len = inputStream.read(buf)) != -1) {
@@ -102,8 +105,7 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
         System.out.println(ret);
         // make new local folder
         try {
-            String path = ResourceUtils.getURL("classpath:").getPath()
-                    + "note" + noteGroup.getPath();
+            String path = baseDir + noteGroup.getPath();
             System.out.println(path);
             FileUtils.forceMkdir(new File(path));
         } catch (IOException e) {
