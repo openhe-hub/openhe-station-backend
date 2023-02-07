@@ -14,5 +14,7 @@ public interface NoteGroupService extends IService<NoteGroup> {
 
     Note getNoteInfo(int groupIdx, int passageIdx);
 
-    boolean isNewFolderValid(Folder folder);
+    boolean newFolder(Folder folder);
+
+
 }

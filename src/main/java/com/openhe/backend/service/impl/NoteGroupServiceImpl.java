@@ -1,5 +1,6 @@
 package com.openhe.backend.service.impl;
 
+import ch.qos.logback.core.util.FileUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.openhe.backend.bean.note.Folder;
 import com.openhe.backend.bean.note.Note;
@@ -8,11 +9,14 @@ import com.openhe.backend.mapper.NoteGroupMapper;
 import com.openhe.backend.mapper.NoteMapper;
 import com.openhe.backend.service.NoteGroupService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -74,9 +78,24 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
     }
 
     @Override
-    public boolean isNewFolderValid(Folder folder) {
+    public boolean newFolder(Folder folder) {
         if (!StringUtils.hasLength(folder.getName())) {
             return false;
+        }
+        // insert into database
+        NoteGroup noteGroup = new NoteGroup();
+        noteGroup.setName(folder.getName());
+        noteGroup.setPath("/" + folder.getName());
+        int ret = noteGroupMapper.insert(noteGroup);
+        System.out.println(ret);
+        // make new local folder
+        try {
+            String path = ResourceUtils.getURL("classpath:").getPath()
+                    + "note" + noteGroup.getPath();
+            System.out.println(path);
+            FileUtils.forceMkdir(new File(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return true;
     }

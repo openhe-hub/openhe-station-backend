@@ -39,14 +39,11 @@ public class NoteController {
 
     @PostMapping("/new_note")
     public CreateStatus createNewNote(Note note) {
-        System.out.println(note.toString());
-        System.out.println(note.getFile().getSize());
-        return new CreateStatus("note", noteService.isNewNoteValid(note));
+        return new CreateStatus("note", noteService.newNote(note));
     }
 
     @PostMapping("/new_folder")
     public CreateStatus createNewFolder(@RequestBody Folder folder) {
-        System.out.println(folder.toString());
-        return new CreateStatus("folder", noteGroupService.isNewFolderValid(folder));
+        return new CreateStatus("folder", noteGroupService.newFolder(folder));
     }
 }

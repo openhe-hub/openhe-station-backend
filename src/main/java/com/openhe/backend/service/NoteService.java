@@ -6,5 +6,5 @@ import com.openhe.backend.bean.note.Note;
 import com.openhe.backend.bean.note.NoteGroup;
 
 public interface NoteService extends IService<Note> {
-    boolean isNewNoteValid(Note note);
+    boolean newNote(Note note);
 }
