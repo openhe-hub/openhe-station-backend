@@ -28,6 +28,11 @@ public class NoteController {
                 noteQuery.getPassageIdx());
     }
 
+    @GetMapping("/folder")
+    public List<String> getFolders(){
+        return noteGroupService.getFolders();
+    }
+
     @PostMapping("/info")
     public Note getNoteInfo(@RequestBody NoteQuery noteQuery) {
         return noteGroupService.getNoteInfo(noteQuery.getGroupIdx(),

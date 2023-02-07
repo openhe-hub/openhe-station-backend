@@ -10,5 +10,6 @@ D:\program\java\openhe-station-backend\src\main\java\com\openhe\backend\controll
 D:\program\java\openhe-station-backend\src\main\java\com\openhe\backend\OpenheStationBackendApplication.java
 D:\program\java\openhe-station-backend\src\main\java\com\openhe\backend\bean\note\NoteGroup.java
 D:\program\java\openhe-station-backend\src\main\java\com\openhe\backend\service\NoteService.java
+D:\program\java\openhe-station-backend\src\main\java\com\openhe\backend\bean\note\Passage.java
 D:\program\java\openhe-station-backend\src\main\java\com\openhe\backend\service\impl\NoteServiceImpl.java
 D:\program\java\openhe-station-backend\src\main\java\com\openhe\backend\mapper\NoteGroupMapper.java

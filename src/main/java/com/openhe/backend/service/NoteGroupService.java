@@ -12,6 +12,8 @@ public interface NoteGroupService extends IService<NoteGroup> {
 
     String loadPassage(int groupIdx, int passageIdx);
 
+    List<String> getFolders();
+
     Note getNoteInfo(int groupIdx, int passageIdx);
 
     boolean newFolder(Folder folder);

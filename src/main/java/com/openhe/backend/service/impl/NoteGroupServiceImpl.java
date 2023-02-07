@@ -19,6 +19,7 @@ import org.springframework.util.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,6 +67,18 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
         }
 
         return content.toString();
+    }
+
+    @Override
+    public List<String> getFolders() {
+        if (!isLoaded) {
+            loadStructure();
+        }
+        List<String> folders = new ArrayList<>();
+        for (NoteGroup noteGroup : noteGroups) {
+            folders.add(noteGroup.getPath());
+        }
+        return folders;
     }
 
     @Override
