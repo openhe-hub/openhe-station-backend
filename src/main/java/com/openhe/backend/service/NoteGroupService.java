@@ -16,5 +16,9 @@ public interface NoteGroupService extends IService<NoteGroup> {
 
     boolean newFolder(Folder folder);
 
+    int getGroupId(String groupPath);
+
+    String getGroupPath(String groupName);
+
 
 }

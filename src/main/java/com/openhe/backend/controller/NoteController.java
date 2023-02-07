@@ -1,9 +1,6 @@
 package com.openhe.backend.controller;
 
-import com.openhe.backend.bean.note.Folder;
-import com.openhe.backend.bean.note.Note;
-import com.openhe.backend.bean.note.NoteGroup;
-import com.openhe.backend.bean.note.NoteQuery;
+import com.openhe.backend.bean.note.*;
 import com.openhe.backend.bean.status.CreateStatus;
 import com.openhe.backend.service.NoteGroupService;
 import com.openhe.backend.service.NoteService;
@@ -38,8 +35,8 @@ public class NoteController {
     }
 
     @PostMapping("/new_note")
-    public CreateStatus createNewNote(Note note) {
-        return new CreateStatus("note", noteService.newNote(note));
+    public CreateStatus createNewNote(Passage passage) {
+        return new CreateStatus("note", noteService.newNote(passage));
     }
 
     @PostMapping("/new_folder")

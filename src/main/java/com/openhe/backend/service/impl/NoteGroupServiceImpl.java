@@ -65,7 +65,6 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
             throw new RuntimeException(e);
         }
 
-        log.info(content.toString());
         return content.toString();
     }
 
@@ -98,5 +97,27 @@ public class NoteGroupServiceImpl extends ServiceImpl<NoteGroupMapper, NoteGroup
             throw new RuntimeException(e);
         }
         return true;
+    }
+
+    @Override
+    public int getGroupId(String groupPath) {
+        if (!isLoaded) loadStructure();
+        for (NoteGroup noteGroup : noteGroups) {
+            if (noteGroup.getPath().equals(groupPath)) {
+                return noteGroup.getId();
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public String getGroupPath(String groupPath) {
+        if (!isLoaded) loadStructure();
+        for (NoteGroup noteGroup : noteGroups) {
+            if (noteGroup.getPath().equals(groupPath)) {
+                return noteGroup.getPath();
+            }
+        }
+        return "";
     }
 }
